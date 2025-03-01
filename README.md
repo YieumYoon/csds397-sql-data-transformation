@@ -4,6 +4,8 @@
 
 This project demonstrates SQL-based data analysis on employee data. It imports employee records from a CSV file, performs various data transformations and analyses using MySQL, and exports the resulting analytical tables as CSV files.
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/DZEgGAYZ2Es/0.jpg)](https://www.youtube.com/watch?v=DZEgGAYZ2Es)
+
 ## Getting Started
 
 ### Prerequisites
