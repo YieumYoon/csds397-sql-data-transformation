@@ -6,14 +6,14 @@ USE employee_analytics;
 DROP TABLE IF EXISTS employee_data;
 CREATE TABLE IF NOT EXISTS employee_data (
     EmployeeID INT PRIMARY KEY,
-    Name VARCHAR(100),
+    Name VARCHAR(60),
     Age INT,
-    Department VARCHAR(50),
+    Department VARCHAR(20),
     DateOfJoining DATE,
     YearsOfExperience INT,
-    Country VARCHAR(50),
+    Country VARCHAR(20),
     Salary INT,
-    PerformanceRating VARCHAR(100)
+    PerformanceRating VARCHAR(20)
 );
 
 -- 2. Import Data
@@ -21,7 +21,6 @@ CREATE TABLE IF NOT EXISTS employee_data (
 LOAD DATA LOCAL INFILE 'employee_data_clean.csv' 
 INTO TABLE employee_data
 FIELDS TERMINATED BY ',' 
-ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (EmployeeID, Name, Age, Department, DateOfJoining, YearsOfExperience, Country, Salary, PerformanceRating);
@@ -29,11 +28,9 @@ IGNORE 1 LINES
 SELECT * FROM employee_data;
 
 -- 3. Basic Transformations
-DROP TABLE IF EXISTS salary_to_department_analysis;
-DROP TABLE IF EXISTS salary_to_tenure_analysis;
-DROP TABLE IF EXISTS performance_by_salary_analysis;
 
 -- Average Salary by Department Analysis
+DROP TABLE IF EXISTS salary_to_department_analysis;
 CREATE TABLE salary_to_department_analysis AS
 SELECT 
     Department,
@@ -49,6 +46,7 @@ ORDER BY
 SELECT * FROM salary_to_department_analysis;
 
 -- Tenure to Salary Analysis
+DROP TABLE IF EXISTS salary_to_tenure_analysis;
 CREATE TABLE salary_to_tenure_analysis AS
 SELECT 
     YearsOfExperience AS TenureYears,
@@ -63,6 +61,7 @@ ORDER BY
 SELECT * FROM salary_to_tenure_analysis;
 
 -- Performance Rating Analysis
+DROP TABLE IF EXISTS performance_by_salary_analysis;
 CREATE TABLE performance_by_salary_analysis AS
 SELECT 
     PerformanceRating,
